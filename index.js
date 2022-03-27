@@ -1,17 +1,19 @@
-const ccxt = require("ccxt");
 require("dotenv").config();
+const ccxt = require("ccxt");
+const { portfolio, quoteCurrency, minBalance } = require("./parameters");
 // const axios = require("axios");
 
+// connect exchange
 const exchange = new ccxt[process.env.EXCHANGE_ID]({
   apiKey: process.env.API_KEY,
   secret: process.env.API_SECRET,
 });
-// const cmcApiHost = "pro-api.coinmarketcap.com";
 // console.log(exchange.requiredCredentials); // prints required credentials
 exchange.checkRequiredCredentials(); // throw AuthenticationError
 const rateLimitDelay = parseInt(process.env.RATE_LIMIT_DELAY); // milliseconds = seconds * 1000
 
 // TODO: allocate portfolio percentage by market cap
+// const cmcApiHost = "pro-api.coinmarketcap.com";
 // const cmcIdMap = {
 //   BTC: "1",
 //   ETH: "1027",
@@ -23,23 +25,6 @@ const rateLimitDelay = parseInt(process.env.RATE_LIMIT_DELAY); // milliseconds =
 //   AVAX: "5805",
 //   ATOM: "3794",
 // };
-
-const portfolioPercentage = {
-  BTC: 20,
-  ETH: 10,
-  BNB: 10,
-  FTT: 10,
-  SOL: 10,
-  LUNA: 10,
-  AVAX: 10,
-  DOT: 10,
-  ATOM: 10,
-};
-
-const quoteCurrency = "USDT";
-const minBalance = {
-  USDT: 100,
-};
 
 const main = async () => {
   // check balance
@@ -53,31 +38,36 @@ const main = async () => {
     return;
   }
 
-  for (const baseCurrency in portfolioPercentage) {
+  console.log("---");
+
+  for (const baseCurrency in portfolio) {
     if (
-      portfolioPercentage[baseCurrency] !== 0 &&
-      Object.hasOwnProperty.call(portfolioPercentage, baseCurrency)
+      portfolio[baseCurrency] !== 0 &&
+      Object.hasOwnProperty.call(portfolio, baseCurrency)
     ) {
-      // const percentage = portfolioPercentage[baseCurrency];
-      // get market price
       const symbol = `${baseCurrency}/${quoteCurrency}`;
       console.log("symbol", symbol);
 
+      // get market price
       const ticker = await exchange.fetchTicker(symbol);
       const currentMarketPrice = ticker.ask;
       console.log("current market ask price", currentMarketPrice);
 
+      // calculate limit buy order price
       const limitBuyOrderPrice =
         currentMarketPrice - (currentMarketPrice * 5) / 1000;
       console.log("limit buy order price", limitBuyOrderPrice);
 
+      // calculate quoteCurrency amount
       const quoteCurrencyAmount =
-        (quoteCurrencyBalance * portfolioPercentage[baseCurrency]) / 100;
+        (quoteCurrencyBalance * portfolio[baseCurrency]) / 100;
       console.log("quoteCurrencyAmount:", quoteCurrencyAmount, quoteCurrency);
 
+      // calculate baseCurrency amount
       const baseCurrencyAmount = quoteCurrencyAmount / limitBuyOrderPrice;
       console.log("baseCurrencyAmount:", baseCurrencyAmount, baseCurrency);
 
+      // place limit buy order
       const limitBuyOrder = await exchange.createLimitBuyOrder(
         symbol,
         baseCurrencyAmount,
