@@ -55,7 +55,7 @@ const main = async () => {
 
       // calculate limit buy order price
       const limitBuyOrderPrice =
-        currentMarketPrice - (currentMarketPrice * 5) / 1000;
+        currentMarketPrice - (currentMarketPrice * 1) / 1000;
       console.log("limit buy order price", limitBuyOrderPrice);
 
       // calculate quoteCurrency amount
