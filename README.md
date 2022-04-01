@@ -2,8 +2,6 @@
 
 A cryptocurrency trading bot to place buy orders by your portfolio.
 
-If we run it in a cronjob service in further then it will become a [DCA](https://www.investopedia.com/terms/d/dollarcostaveraging.asp) bot.
-
 Only support FTX for now, we will support more exchanges in the future.
 
 ## Environment
