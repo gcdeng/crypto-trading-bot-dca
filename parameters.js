@@ -13,8 +13,6 @@ const portfolio = {
 
 const quoteCurrency = "USDT";
 
-const minBalance = {
-  USDT: 100,
-};
+const grantTotalAmount = 400; // grant total available balance if 0
 
-module.exports = { portfolio, quoteCurrency, minBalance };
+module.exports = { portfolio, quoteCurrency, grantTotalAmount };
