@@ -4,8 +4,10 @@ const { portfolio, quoteCurrency, grantTotalAmount } = require("./parameters");
 
 const rateLimitDelay = parseInt(process.env.RATE_LIMIT_DELAY);
 
+const exchangeId = process.env.EXCHANGE_ID || "ftx";
+
 // connect exchange
-const exchange = new ccxt[process.env.EXCHANGE_ID]({
+const exchange = new ccxt[exchangeId]({
   apiKey: process.env.API_KEY,
   secret: process.env.API_SECRET,
 });
