@@ -1,6 +1,6 @@
 # crypto-trading-bot
 
-A cryptocurrency trading bot to place buy orders by your portfolio.
+A simple cryptocurrency trading bot to place buy orders by your portfolio.
 
 Only support FTX for now, we will support more exchanges in the future.
 
