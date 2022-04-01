@@ -6,6 +6,10 @@ If we run it in a cronjob service in further then it will become a [DCA](https:/
 
 Only support FTX for now, we will support more exchanges in the future.
 
+## Environment
+
+Node 10.4.0+
+
 ## HOW TO USE
 
 1. create `.env` in root folder.
