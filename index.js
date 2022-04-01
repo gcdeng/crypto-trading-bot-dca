@@ -2,7 +2,13 @@ require("dotenv").config();
 const ccxt = require("ccxt");
 const { portfolio, quoteCurrency, grantTotalAmount } = require("./parameters");
 
-const rateLimitDelay = parseInt(process.env.RATE_LIMIT_DELAY);
+if (!process.env.API_KEY) {
+  throw new Error("API_KEY is required.");
+}
+if (!process.env.API_SECRET) {
+  throw new Error("API_SECRET is required.");
+}
+const rateLimitDelay = parseInt(process.env.RATE_LIMIT_DELAY) || 1000;
 
 const exchangeId = process.env.EXCHANGE_ID || "ftx";
 
