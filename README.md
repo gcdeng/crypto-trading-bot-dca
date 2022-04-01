@@ -6,7 +6,7 @@ Only support FTX for now, we will support more exchanges in the future.
 
 ## Environment
 
-Node 10.4.0+
+Node v16.14.2+
 
 ## HOW TO USE
 
