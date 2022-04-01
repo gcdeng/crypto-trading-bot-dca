@@ -1,4 +1,4 @@
-// parameters for DCA plan
+// parameters for DCA strategy
 const portfolio = {
   BTC: 20,
   ETH: 20,
@@ -13,6 +13,6 @@ const portfolio = {
 
 const quoteCurrency = "USDT";
 
-const grantTotalAmount = 400; // grant total available balance if 0
+const grantTotalAmount = 400; // grant total available balance in your account if 0
 
 module.exports = { portfolio, quoteCurrency, grantTotalAmount };
