@@ -1,4 +1,4 @@
-// parameters for DCA strategy
+// baseCurrency and percentage
 const portfolio = {
   BTC: 20,
   ETH: 20,
