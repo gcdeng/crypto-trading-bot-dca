@@ -2,7 +2,7 @@
 
 A cryptocurrency trading bot to implement [dollar-cost averaging (DCA)](https://www.investopedia.com/terms/d/dollarcostaveraging.asp) investment strategy in FTX Pro exchange.
 
-This bot allows you to determine portfolio and place limit buy orders regularly in FTX Pro. It is similar to [Auto-Invest Plan in Binance](https://www.binance.com/en/savings/auto-invest) or [屯幣寶 in Pionex](https://www.pionex.com/blog/zh/pionex-rebalancingbot-tw/) but with less fees.
+This bot allows you to configure your portfolio and place limit buy orders to purchase crypto regularly in FTX Pro. It is similar to [Auto-Invest Plan in Binance](https://www.binance.com/en/savings/auto-invest) or [屯幣寶 in Pionex](https://www.pionex.com/blog/zh/pionex-rebalancingbot-tw/) but with less fees.
 
 ## Environment
 
@@ -19,7 +19,7 @@ npm install
 You can use this project by following two different ways:
 
 1. run it manually once if you want.
-2. set a recurring cycle on how often you want to buy crypto then run it automatically by Serverless Framework Node Scheduled Cron on AWS.
+2. set a recurring cycle on how often you want to buy crypto then run it automatically by deploy a CronJob service on AWS Lambda.
 
 ### How to run it manually
 
@@ -32,11 +32,11 @@ You can use this project by following two different ways:
    API_SECRET=YOUR_FTX_API_SECRET
    ```
 
-2. configure order parameters in `parameters.js`, check out that file for more details.
+2. configure portfolio and order parameters in `parameters.js`, check out that file for more details.
 
 3. run `npm start`, the bot will start placing orders but only one time.
 
-### How to run it automatically at recurring cycle
+### How to run it automatically at specific time or in specific intervals
 
 This project will deploy a cronjob service running on AWS Lambda & EventBridge to execute our investment script regularly by using [Serverless Framework](https://www.serverless.com/).
 
