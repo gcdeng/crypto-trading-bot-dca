@@ -19,7 +19,7 @@ npm install
 You can use this project by following two different ways:
 
 1. run it manually once if you want.
-2. set a recurring cycle on how often you want to buy crypto then run it automatically by deploy a CronJob service on AWS Lambda.
+2. set a recurring cycle on how often you want to buy crypto then run it automatically by deploy a cron-like serverless service on AWS Lambda.
 
 ### How to run it manually
 
@@ -38,7 +38,7 @@ You can use this project by following two different ways:
 
 ### How to run it automatically at specific time or in specific intervals
 
-This project will deploy a cronjob service running on AWS Lambda & EventBridge to execute our investment script regularly by using [Serverless Framework](https://www.serverless.com/).
+This project will deploy a cron-like serverless service running on AWS Lambda & EventBridge to execute our investment function regularly by using [Serverless Framework](https://www.serverless.com/).
 
 1. [setup your Serverless Framework & AWS account](https://www.serverless.com/framework/docs/getting-started)
 
