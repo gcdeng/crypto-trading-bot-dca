@@ -4,8 +4,6 @@ service: crypto-trading-bot-dca
 
 frameworkVersion: "3"
 
-useDotenv: true
-
 provider:
   name: aws
   runtime: nodejs14.x
