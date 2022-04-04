@@ -81,6 +81,4 @@ This project will deploy a cronjob service running on AWS Lambda & EventBridge t
    npm run remove
    ```
 
-> ## Disclaimer
->
-> No Investment Advice & Do Your Own Research
+> **Disclaimer**: No Investment Advice & Do Your Own Research
