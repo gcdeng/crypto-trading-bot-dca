@@ -13,6 +13,6 @@ const portfolio = {
 
 const quoteCurrency = "USDT";
 
-const grantTotalAmount = 400; // grant total available balance in your account if 0
+const grantTotalAmount = 400; // grant total available balance of quoteCurrency in your account if grantTotalAmount set to 0
 
 module.exports = { portfolio, quoteCurrency, grantTotalAmount };

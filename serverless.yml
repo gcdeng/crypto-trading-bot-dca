@@ -1,0 +1,24 @@
+org: ericdeng
+app: crypto-trading-bot
+service: crypto-trading-bot-dca
+
+frameworkVersion: "3"
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  environment:
+    EXCHANGE_ID: ${param:EXCHANGE_ID}
+    API_KEY: ${param:API_KEY}
+    API_SECRET: ${param:API_SECRET}
+
+functions:
+  cronHandler:
+    handler: handler.run
+    events:
+      # Invoke Lambda function every saturday
+      - schedule:
+          rate: cron(0 0 ? * SAT *)
+          enabled: true
