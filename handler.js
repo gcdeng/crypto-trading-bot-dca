@@ -5,6 +5,17 @@ const parameters = require("./parameters");
 module.exports.run = async () => {
   console.log("parameters", parameters);
   const { portfolio, quoteCurrency, grantTotalAmount } = parameters;
+  if (!portfolio) {
+    throw new Error("portfolio parameter is required.");
+  }
+
+  if (!quoteCurrency) {
+    throw new Error("quoteCurrency parameter is required.");
+  }
+
+  if (!grantTotalAmount) {
+    throw new Error("grantTotalAmount parameter is required.");
+  }
 
   if (!process.env.API_KEY) {
     throw new Error("API_KEY is required.");
@@ -22,18 +33,35 @@ module.exports.run = async () => {
   });
   exchange.checkRequiredCredentials(); // throw AuthenticationError
 
-  // check balance
+  // validate quoteCurrencyBalance
   const balance = await exchange.fetchBalance();
   const quoteCurrencyBalance = balance?.[quoteCurrency]?.free || 0;
   console.log("quoteCurrencyBalance: ", quoteCurrencyBalance, quoteCurrency);
-  console.log("grantTotalAmount: ", grantTotalAmount, quoteCurrency);
-  if (quoteCurrencyBalance < grantTotalAmount) {
-    throw new Error("Insufficient quote currency balance");
+  if (!quoteCurrencyBalance) {
+    throw new Error("Insufficient quoteCurrencyBalance");
   }
-  let _grantTotalAmount = grantTotalAmount;
-  if (_grantTotalAmount === 0) {
+
+  // validate grantTotalAmount
+  let _grantTotalAmount;
+  if (
+    typeof grantTotalAmount === "string" &&
+    grantTotalAmount.toLowerCase() === "all"
+  ) {
+    // grant all quoteCurrencyBalance
     _grantTotalAmount = quoteCurrencyBalance;
+  } else if (typeof grantTotalAmount === "number") {
+    if (quoteCurrencyBalance < grantTotalAmount) {
+      // ensure sufficient quoteCurrencyBalance
+      throw new Error("Insufficient quoteCurrencyBalance");
+    }
+    _grantTotalAmount = grantTotalAmount;
   }
+
+  if (!_grantTotalAmount) {
+    // if grantTotalAmount is invalid or equal to 0
+    throw new Error("wrong grantTotalAmount parameter");
+  }
+  console.log("grantTotalAmount: ", _grantTotalAmount, quoteCurrency);
 
   console.log("\n---start placing limit buy orders---\n");
 
@@ -79,7 +107,7 @@ module.exports.run = async () => {
       );
       console.log("placed limit buy order: ", limitBuyOrder, "\n");
     } catch (error) {
-      console.error(error);
+      console.error(error, "\n");
       continue; // continue to place next order
     }
   }
