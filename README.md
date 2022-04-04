@@ -25,7 +25,7 @@ You can use this project by following two different ways:
 
 1. create `.env` in root folder and configure your FTX api secrets.
 
-   > Note: do not commit your secrets in .env to git
+   > **Warning**: do not commit your secrets in .env to git
 
    ```text
    API_KEY=YOUR_FTX_API_KEY
