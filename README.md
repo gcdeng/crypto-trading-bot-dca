@@ -19,7 +19,7 @@ npm install
 You can use this project by following two different ways:
 
 1. run it manually once if you want.
-2. set a recurring cycle on how often you want to buy crypto then run it automatically by deploy a cron-like serverless service on AWS Lambda.
+2. set a recurring cycle on how often you want to buy crypto then run it automatically by deploying a cron-like serverless service on AWS Lambda.
 
 ### How to run it manually
 
@@ -32,7 +32,14 @@ You can use this project by following two different ways:
    API_SECRET=YOUR_FTX_API_SECRET
    ```
 
-2. configure portfolio and order parameters in `parameters.js`, check out that file for more details.
+2. configure portfolio and order parameters in `parameters.js`.
+
+   In short,
+
+   - set crypto symbol and percentage you want to buy.
+   - set how much you want to buy and stablecoin symbol that your preferred for payment.
+
+   check out that file for more details.
 
 3. run `npm start`, the bot will start placing orders but only one time.
 

@@ -4,7 +4,7 @@
  * if you don't have sufficient balance (less than 400 USDT in this example) in your account then the purchase will fail. The bot will try to make another purchase on the next scheduled time.
  */
 
-// set crypto symbol you want to buy and each percentage
+// set crypto symbol and percentage you want to buy
 const portfolio = {
   BTC: 20,
   ETH: 20,
@@ -17,7 +17,7 @@ const portfolio = {
   ATOM: 8,
 };
 
-// set your preferred stablecoin symbol
+// your preferred stablecoin symbol for payment
 const quoteCurrency = "USDT";
 
 // how much you want to buy
