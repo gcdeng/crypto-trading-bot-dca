@@ -19,7 +19,7 @@ npm install
 You can use this project by following two different ways:
 
 1. run it manually once if you want.
-2. set a recurring cycle on how often you want to buy crypto then run it automatically by deploying a cron-like serverless service on AWS Lambda.
+2. run it automatically at a recurring cycle on how often you want to buy crypto by deploying a cron-like serverless service on AWS.
 
 ### How to run it manually
 
@@ -41,11 +41,17 @@ You can use this project by following two different ways:
 
    check out that file for more details.
 
-3. run `npm start`, the bot will start placing orders but only one time.
+3. start the bot
 
-### How to run it automatically at specific time or in specific intervals
+   ```shell
+   npm start
+   ```
 
-This project will deploy a cron-like serverless service running on AWS Lambda & EventBridge to execute our investment function regularly by using [Serverless Framework](https://www.serverless.com/).
+   the bot will start placing orders but only one time.
+
+### How to run it automatically at a recurring cycle
+
+This project will deploy a cron-like serverless service running on AWS Lambda & EventBridge using [Serverless Framework](https://www.serverless.com/). The event scheduler created on AWS EventBridge will trigger our investment function which running on AWS Lambda at specific time or in specific intervals you configured.
 
 1. [setup your Serverless Framework & AWS account](https://www.serverless.com/framework/docs/getting-started)
 
@@ -53,7 +59,7 @@ This project will deploy a cron-like serverless service running on AWS Lambda & 
 
 3. configure order parameters in `parameters.js`.
 
-4. configure event scheduler in `serverless.yml` for configuring functions to be executed at specific time or in specific intervals.
+4. create event scheduler in `serverless.yml` which is used for configuring functions to be executed at specific time or in specific intervals.
 
    example:
 
@@ -66,7 +72,13 @@ This project will deploy a cron-like serverless service running on AWS Lambda & 
 
    Detailed information about cron expressions is available in official [AWS docs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions).
 
-5. run `npm run deploy` to do deployment, you are all set!
+5. Deployment
+
+   ```shell
+   npm run deploy
+   ```
+
+   That’s it! Our investment function is running on a schedule, it will automatically be trigger at next scheduled time.
 
 ## FAQ
 
@@ -80,9 +92,9 @@ This project will deploy a cron-like serverless service running on AWS Lambda & 
 
 3. How to pause service on AWS?
 
-   disable event scheduler by updating `serverless.yml` then redeploy.
+   disable event scheduler by switching `enabled` flag to `false` in `serverless.yml` then redeploy.
 
-4. How to remove service on AWS?
+4. How to remove service/stop bot on AWS?
 
    ```shell
    npm run remove
@@ -91,3 +103,13 @@ This project will deploy a cron-like serverless service running on AWS Lambda & 
 ## Disclaimer
 
 No Investment Advice & Do Your Own Research
+
+## Reference
+
+<https://www.serverless.com/framework/docs>
+
+<https://www.serverless.com/examples/aws-node-scheduled-cron>
+
+<https://www.serverless.com/blog/cron-jobs-on-aws>
+
+<https://eqolot.com/technologie/blog/running-cron-jobs-on-aws-lambda-with-scheduled-events>
