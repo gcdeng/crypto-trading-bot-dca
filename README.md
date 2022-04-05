@@ -34,8 +34,6 @@ You can use this project by following two different ways:
 
 2. configure portfolio and order parameters in `parameters.js`.
 
-   In short,
-
    - set crypto symbol and percentage you want to buy.
    - set how much you want to buy and stablecoin symbol that your preferred for payment.
 
