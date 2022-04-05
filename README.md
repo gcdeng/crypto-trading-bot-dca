@@ -2,7 +2,7 @@
 
 > A cryptocurrency trading bot to help you implement [dollar-cost averaging (DCA)](https://www.investopedia.com/terms/d/dollarcostaveraging.asp) investment strategy automatically in FTX Pro exchange.
 
-This bot allows you to configure your portfolio and place limit buy orders to purchase crypto regularly in FTX Pro. It is similar to [Auto-Invest Plan in Binance](https://www.binance.com/en/savings/auto-invest) or [屯幣寶 in Pionex](https://www.pionex.com/blog/zh/pionex-rebalancingbot-tw/) but with less fees.
+This bot allows you to configure your portfolio and place limit buy orders to purchase crypto periodically in FTX Pro. It is similar to [Auto-Invest Plan in Binance](https://www.binance.com/en/savings/auto-invest) or [屯幣寶 in Pionex](https://www.pionex.com/blog/zh/pionex-rebalancingbot-tw/) but with less fees.
 
 ## Environment
 
@@ -78,7 +78,7 @@ This project will deploy a cron-like serverless service running on AWS Lambda & 
    npm run deploy
    ```
 
-   That’s it! Our investment function is running on a schedule, it will automatically be trigger at next scheduled time.
+   That’s it! Our investment function is running on a schedule, it will automatically be trigger at next scheduled time. You can also check out next 10 scheduled time on AWS EventBridge Admin.
 
 ## FAQ
 
