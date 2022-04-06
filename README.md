@@ -2,7 +2,7 @@
 
 **A cryptocurrency trading bot to help you implement [dollar-cost averaging (DCA)](https://www.investopedia.com/terms/d/dollarcostaveraging.asp) investment strategy automatically in FTX Pro exchange.**
 
-This bot allows you to configure your portfolio and place limit buy orders to purchase crypto periodically in FTX Pro. It is similar to [Auto-Invest Plan in Binance](https://www.binance.com/en/savings/auto-invest) or [屯幣寶 in Pionex](https://www.pionex.com/blog/zh/pionex-rebalancingbot-tw/) but with less fees.
+This bot allows you to configure your portfolio and place limit buy orders to purchase crypto periodically in FTX Pro. It is similar to [Auto-Invest Plan in Binance](https://www.binance.com/en/savings/auto-invest) or [極速定投 in Pionex](https://www.pionex.com/blog/zh/dca-tw/) but with less fees.
 
 ## Environment
 
