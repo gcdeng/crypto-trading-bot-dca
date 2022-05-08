@@ -85,14 +85,16 @@ module.exports.run = async () => {
       continue; // continue to place next order
     }
 
-    // get market price
-    const currentMarketPrice = ticker.ask;
-    console.log("current market ask price:", currentMarketPrice);
+    // // get market price
+    // const currentMarketPrice = ticker.ask;
+    // console.log("current market ask price:", currentMarketPrice);
 
     // calculate limit buy order price
-    const limitBuyOrderPrice =
-      currentMarketPrice - (currentMarketPrice * 1) / 1000;
-    console.log("limit buy order price:", limitBuyOrderPrice);
+    const limitBuyOrderPrice = ticker.bid;
+    console.log(
+      "set limit buy order price to current market bid price:",
+      limitBuyOrderPrice
+    );
 
     // calculate baseCurrency amount
     const baseCurrencyAmount = quoteCurrencyAmount / limitBuyOrderPrice;
