@@ -6,14 +6,14 @@
 
 // set crypto symbol and percentage you want to buy
 const portfolio = {
-  BTC: 50,
-  ETH: 50,
+  BTC: 20,
+  ETH: 80,
 };
 
 // your preferred stablecoin symbol for payment
 const quoteCurrency = "USDT";
 
 // how much you want to buy
-const grantTotalAmount = 100; // grant total available balance of quoteCurrency in your account if grantTotalAmount set to 'all'
+const grantTotalAmount = 20; // grant total available balance of quoteCurrency in your account if grantTotalAmount set to 'all'
 
 module.exports = { portfolio, quoteCurrency, grantTotalAmount };

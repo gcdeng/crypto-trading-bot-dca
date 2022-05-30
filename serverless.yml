@@ -16,7 +16,7 @@ functions:
   cronHandler:
     handler: handler.run
     events:
-      # Invoke Lambda function every saturday
+      # Invoke Lambda function at 16:00 pm (UTC) every day
       - schedule:
-          rate: cron(0 0 ? * SAT *)
+          rate: cron(0 16 * * ? *)
           enabled: true
