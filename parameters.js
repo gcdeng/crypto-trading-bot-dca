@@ -6,8 +6,8 @@
 
 // set crypto symbol and percentage you want to buy
 const portfolio = {
-  BTC: 20,
-  ETH: 80,
+  BTC: 40,
+  ETH: 60,
 };
 
 // your preferred stablecoin symbol for payment
